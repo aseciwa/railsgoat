@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'railsgoat'
-set :repo_url, 'git@github.com:aseciwa/railsgoat.git'
+set :repo_url, 'https://github.com/aseciwa/railsgoat.git'
 set :deploy_to, '/opt/www/railsgoat'
 set :user, 'deploy'
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
@@ -43,7 +43,7 @@ namespace :deploy do
     desc 'Manage Unicorn'
     task command do
       on roles(:app), in: :sequence, wait: 1 do
-	 execute "/etc/init.d/unicorn_#{fetch(:application)} #{command}'
+	 execute '/etc/init.d/unicorn_#{fetch(:application)} #{command}'
       end
     end
   end
